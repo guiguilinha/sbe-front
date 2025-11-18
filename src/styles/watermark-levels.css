@@ -1,0 +1,255 @@
+/* Classes CSS específicas para marcas d'água por nível e máscara */
+
+/* Nível Iniciante */
+.watermark-level-iniciante.watermark-mask-1 {
+  filter: drop-shadow(0 0 8px #3B82F6);
+  animation: pulse-iniciante 3s ease-in-out infinite;
+}
+
+.watermark-level-iniciante.watermark-mask-2 {
+  filter: drop-shadow(0 0 8px #3B82F6);
+  animation: rotate-iniciante 4s linear infinite;
+}
+
+.watermark-level-iniciante.watermark-mask-3 {
+  filter: drop-shadow(0 0 8px #3B82F6);
+  animation: bounce-iniciante 2s ease-in-out infinite;
+}
+
+.watermark-level-iniciante.watermark-mask-4 {
+  filter: drop-shadow(0 0 8px #3B82F6);
+  animation: glow-iniciante 2.5s ease-in-out infinite;
+}
+
+/* Nível Aprendiz */
+.watermark-level-aprendiz.watermark-mask-1 {
+  filter: drop-shadow(0 0 8px #10B981);
+  animation: pulse-aprendiz 3s ease-in-out infinite;
+}
+
+.watermark-level-aprendiz.watermark-mask-2 {
+  filter: drop-shadow(0 0 8px #10B981);
+  animation: rotate-aprendiz 4s linear infinite;
+}
+
+.watermark-level-aprendiz.watermark-mask-3 {
+  filter: drop-shadow(0 0 8px #10B981);
+  animation: bounce-aprendiz 2s ease-in-out infinite;
+}
+
+.watermark-level-aprendiz.watermark-mask-4 {
+  filter: drop-shadow(0 0 8px #10B981);
+  animation: glow-aprendiz 2.5s ease-in-out infinite;
+}
+
+/* Nível Intermediário */
+.watermark-level-intermediario.watermark-mask-1 {
+  filter: drop-shadow(0 0 8px #F59E0B);
+  animation: pulse-intermediario 3s ease-in-out infinite;
+}
+
+.watermark-level-intermediario.watermark-mask-2 {
+  filter: drop-shadow(0 0 8px #F59E0B);
+  animation: rotate-intermediario 4s linear infinite;
+}
+
+.watermark-level-intermediario.watermark-mask-3 {
+  filter: drop-shadow(0 0 8px #F59E0B);
+  animation: bounce-intermediario 2s ease-in-out infinite;
+}
+
+.watermark-level-intermediario.watermark-mask-4 {
+  filter: drop-shadow(0 0 8px #F59E0B);
+  animation: glow-intermediario 2.5s ease-in-out infinite;
+}
+
+/* Nível Avançado */
+.watermark-level-avancado.watermark-mask-1 {
+  filter: drop-shadow(0 0 8px #EF4444);
+  animation: pulse-avancado 3s ease-in-out infinite;
+}
+
+.watermark-level-avancado.watermark-mask-2 {
+  filter: drop-shadow(0 0 8px #EF4444);
+  animation: rotate-avancado 4s linear infinite;
+}
+
+.watermark-level-avancado.watermark-mask-3 {
+  filter: drop-shadow(0 0 8px #EF4444);
+  animation: bounce-avancado 2s ease-in-out infinite;
+}
+
+.watermark-level-avancado.watermark-mask-4 {
+  filter: drop-shadow(0 0 8px #EF4444);
+  animation: glow-avancado 2.5s ease-in-out infinite;
+}
+
+/* Nível Expert */
+.watermark-level-expert.watermark-mask-1 {
+  filter: drop-shadow(0 0 8px #8B5CF6);
+  animation: pulse-expert 3s ease-in-out infinite;
+}
+
+.watermark-level-expert.watermark-mask-2 {
+  filter: drop-shadow(0 0 8px #8B5CF6);
+  animation: rotate-expert 4s linear infinite;
+}
+
+.watermark-level-expert.watermark-mask-3 {
+  filter: drop-shadow(0 0 8px #8B5CF6);
+  animation: bounce-expert 2s ease-in-out infinite;
+}
+
+.watermark-level-expert.watermark-mask-4 {
+  filter: drop-shadow(0 0 8px #8B5CF6);
+  animation: glow-expert 2.5s ease-in-out infinite;
+}
+
+/* Nível Default */
+.watermark-level-default.watermark-mask-1 {
+  filter: drop-shadow(0 0 8px #6B7280);
+  animation: pulse-default 3s ease-in-out infinite;
+}
+
+.watermark-level-default.watermark-mask-2 {
+  filter: drop-shadow(0 0 8px #6B7280);
+  animation: rotate-default 4s linear infinite;
+}
+
+.watermark-level-default.watermark-mask-3 {
+  filter: drop-shadow(0 0 8px #6B7280);
+  animation: bounce-default 2s ease-in-out infinite;
+}
+
+.watermark-level-default.watermark-mask-4 {
+  filter: drop-shadow(0 0 8px #6B7280);
+  animation: glow-default 2.5s ease-in-out infinite;
+}
+
+/* Animações específicas por nível */
+
+/* Iniciante - Animações suaves e calmas */
+@keyframes pulse-iniciante {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+@keyframes rotate-iniciante {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bounce-iniciante {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes glow-iniciante {
+  0%, 100% { filter: drop-shadow(0 0 8px #3B82F6); }
+  50% { filter: drop-shadow(0 0 12px #3B82F6); }
+}
+
+/* Aprendiz - Animações mais ativas */
+@keyframes pulse-aprendiz {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+@keyframes rotate-aprendiz {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bounce-aprendiz {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes glow-aprendiz {
+  0%, 100% { filter: drop-shadow(0 0 8px #10B981); }
+  50% { filter: drop-shadow(0 0 15px #10B981); }
+}
+
+/* Intermediário - Animações dinâmicas */
+@keyframes pulse-intermediario {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.15); }
+}
+
+@keyframes rotate-intermediario {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bounce-intermediario {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow-intermediario {
+  0%, 100% { filter: drop-shadow(0 0 8px #F59E0B); }
+  50% { filter: drop-shadow(0 0 18px #F59E0B); }
+}
+
+/* Avançado - Animações intensas */
+@keyframes pulse-avancado {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.2); }
+}
+
+@keyframes rotate-avancado {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bounce-avancado {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes glow-avancado {
+  0%, 100% { filter: drop-shadow(0 0 8px #EF4444); }
+  50% { filter: drop-shadow(0 0 20px #EF4444); }
+}
+
+/* Expert - Animações premium */
+@keyframes pulse-expert {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.25); }
+}
+
+@keyframes rotate-expert {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bounce-expert {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes glow-expert {
+  0%, 100% { filter: drop-shadow(0 0 8px #8B5CF6); }
+  50% { filter: drop-shadow(0 0 25px #8B5CF6); }
+}
+
+/* Default - Animações neutras */
+@keyframes pulse-default {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.02); }
+}
+
+@keyframes rotate-default {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bounce-default {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes glow-default {
+  0%, 100% { filter: drop-shadow(0 0 8px #6B7280); }
+  50% { filter: drop-shadow(0 0 10px #6B7280); }
+} 

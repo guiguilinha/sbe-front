@@ -1,0 +1,267 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Campuni';
+    font-weight: 100;
+    src: url('/fonts/campuni/Campuni-Thin.otf') format('opentype');
+  }
+  @font-face {
+    font-family: 'Campuni';
+    font-weight: 200;
+    src: url('/fonts/campuni/Campuni-ExtraLight.otf') format('opentype');
+  }
+  @font-face {
+    font-family: 'Campuni';
+    font-weight: 300;
+    src: url('/fonts/campuni/Campuni-Light.otf') format('opentype');
+  }
+  @font-face {
+    font-family: 'Campuni';
+    font-weight: 400;
+    src: url('/fonts/campuni/Campuni-Regular.otf') format('opentype');
+  }
+  @font-face {
+    font-family: 'Campuni';
+    font-weight: 500;
+    src: url('/fonts/campuni/Campuni-Medium.otf') format('opentype');
+  }
+  @font-face {
+    font-family: 'Campuni';
+    font-weight: 700;
+    src: url('/fonts/campuni/Campuni-Bold.otf') format('opentype');
+  }
+  @font-face {
+    font-family: 'Campuni';
+    font-weight: 900;
+    src: url('/fonts/campuni/Campuni-Black.otf') format('opentype');
+  }
+
+  body {
+    @apply font-poppins;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-campuni;
+  }
+  
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 215.2915 27.9312% 26.8494%;
+    --card: 0 0% 100%;
+    --card-foreground: 215.2915 27.9312% 26.8494%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215.2915 27.9312% 26.8494%;
+    --primary: 210 100% 36.0784%;
+    --primary-foreground: 210.0000 40.0000% 98.0392%;
+    --secondary: 209.9994 40.5528% 96.0495%;
+    --secondary-foreground: 215.2915 27.9312% 26.8494%;
+    --muted: 210.0000 40.0000% 96.0784%;
+    --muted-foreground: 215.3846 16.3180% 46.8627%;
+    --accent: 214.2845 96.2220% 92.7756%;
+    --accent-foreground: 215.2915 27.9312% 26.8494%;
+    --destructive: 0 84.2365% 60.1961%;
+    --destructive-foreground: 210.0000 40.0000% 98.0392%;
+    --border: 209.9994 40.5528% 96.0495%;
+    --input: 214.2848 32.9750% 91.4235%;
+    --ring: 210 100% 36.0784%;
+    --chart-1: 217.2193 91.2195% 59.8039%;
+    --chart-2: 221.2121 83.1933% 53.3333%;
+    --chart-3: 224.2781 76.3265% 48.0392%;
+    --chart-4: 225.9310 70.7317% 40.1961%;
+    --chart-5: 224.4444 64.2857% 32.9412%;
+    --sidebar: 210.0027 34.5467% 98.0043%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 209.3478 100% 36.0784%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 214.2845 96.2220% 92.7756%;
+    --sidebar-accent-foreground: 224.8632 67.2785% 33.3285%;
+    --sidebar-border: 209.9994 40.5528% 96.0495%;
+    --sidebar-ring: 209.3478 100% 36.0784%;
+    --font-sans: Poppins, sans-serif;
+    --font-serif: Source Serif 4, serif;
+    --font-mono: JetBrains Mono, monospace;
+    --radius: 0.5rem;
+    --shadow-2xs: 0 1px 3px 0px 240.1341 6.0037% 34.1599% / 0.05;
+    --shadow-xs: 0 1px 3px 0px 240.1341 6.0037% 34.1599% / 0.05;
+    --shadow-sm: 0 1px 3px 0px 240.1341 6.0037% 34.1599% / 0.10, 0 1px 2px -1px 240.1341 6.0037% 34.1599% / 0.10;
+    --shadow: 0 1px 3px 0px 240.1341 6.0037% 34.1599% / 0.10, 0 1px 2px -1px 240.1341 6.0037% 34.1599% / 0.10;
+    --shadow-md: 0 1px 3px 0px 240.1341 6.0037% 34.1599% / 0.10, 0 2px 4px -1px 240.1341 6.0037% 34.1599% / 0.10;
+    --shadow-lg: 0 1px 3px 0px 240.1341 6.0037% 34.1599% / 0.10, 0 4px 6px -1px 240.1341 6.0037% 34.1599% / 0.10;
+    --shadow-xl: 0 1px 3px 0px 240.1341 6.0037% 34.1599% / 0.10, 0 8px 10px -1px 240.1341 6.0037% 34.1599% / 0.10;
+    --shadow-2xl: 0 1px 3px 0px 240.1341 6.0037% 34.1599% / 0.25;
+    --tracking-normal: 0em;
+    --spacing: 0.25rem;
+  }
+  
+  .dark {
+    --background: 222.2222 47.3684% 11.1765%;
+    --foreground: 210.0000 40.0000% 98.0392%;
+    --card: 222.2222 47.3684% 11.1765%;
+    --card-foreground: 210.0000 40.0000% 98.0392%;
+    --popover: 222.2222 47.3684% 11.1765%;
+    --popover-foreground: 210.0000 40.0000% 98.0392%;
+    --primary: 210 100% 36.0784%;
+    --primary-foreground: 210.0000 40.0000% 98.0392%;
+    --secondary: 195.0685 100% 42.9412%;
+    --secondary-foreground: 210.0000 40.0000% 98.0392%;
+    --hero-bg: 210, 100%, 36%;
+    --muted: 217.2414 32.5843% 17.4510%;
+    --muted-foreground: 215.0000 20.2247% 65.0980%;
+    --accent: 80.0000 60% 54.9020%;
+    --accent-foreground: 210.0000 40.0000% 98.0392%;
+    --destructive: 0 62.8205% 30.5882%;
+    --destructive-foreground: 210.0000 40.0000% 98.0392%;
+    --border: 217.2414 32.5843% 17.4510%;
+    --input: 217.2414 32.5843% 17.4510%;
+    --ring: 210 100% 36.0784%;
+    --chart-1: 213.1169 93.9024% 67.8431%;
+    --chart-2: 217.2193 91.2195% 59.8039%;
+    --chart-3: 221.2121 83.1933% 53.3333%;
+    --chart-4: 224.2781 76.3265% 48.0392%;
+    --chart-5: 225.9310 70.7317% 40.1961%;
+    --sidebar: 0 0% 9.0196%;
+    --sidebar-foreground: 0 0% 89.8039%;
+    --sidebar-primary: 217.2193 91.2195% 59.8039%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 224.4444 64.2857% 32.9412%;
+    --sidebar-accent-foreground: 213.3333 96.9231% 87.2549%;
+    --sidebar-border: 0 0% 25.0980%;
+    --sidebar-ring: 217.2193 91.2195% 59.8039%;
+    --font-sans: Poppins, sans-serif;
+    --font-serif: Source Serif 4, serif;
+    --font-mono: JetBrains Mono, monospace;
+    --radius: 0.25rem;
+    --shadow-2xs: 0 1px 3px 0px 0 0% 0% / 0.05;
+    --shadow-xs: 0 1px 3px 0px 0 0% 0% / 0.05;
+    --shadow-sm: 0 1px 3px 0px 0 0% 0% / 0.10, 0 1px 2px -1px 0 0% 0% / 0.10;
+    --shadow: 0 1px 3px 0px 0 0% 0% / 0.10, 0 1px 2px -1px 0 0% 0% / 0.10;
+    --shadow-md: 0 1px 3px 0px 0 0% 0% / 0.10, 0 2px 4px -1px 0 0% 0% / 0.10;
+    --shadow-lg: 0 1px 3px 0px 0 0% 0% / 0.10, 0 4px 6px -1px 0 0% 0% / 0.10;
+    --shadow-xl: 0 1px 3px 0px 0 0% 0% / 0.10, 0 8px 10px -1px 0 0% 0% / 0.10;
+    --shadow-2xl: 0 1px 3px 0px 0 0% 0% / 0.25;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .hero-cut-section {
+    height: 85%;
+    width: 100%;
+    display: block;
+  }
+  .hero-lg-image {
+    background-image: url('/mulher-empreendedora.png');
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+  }
+  .hero-background-shapes {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 2040 420' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='12%' y='10' width='30%' height='16%' stroke='%233B82F6' strokeWidth='2' fill='none' transform='skewX(-12)' /%3e%3crect x='6%' y='200' width='30%' height='10%' fill='%233B82F6' transform='skewX(-12)' /%3e%3crect x='4%' y='120' width='30%' height='24%' stroke='%2338BDF8' strokeWidth='2' fill='none' transform='skewX(-12)' /%3e%3crect x='67%' y='40' width='60%' height='6%' stroke='%2338BDF8' strokeWidth='2' fill='none' transform='skewX(-12)' /%3e%3crect x='66%' y='100' width='60%' height='3%' fill='%2338BDF8' transform='skewX(-12)' /%3e%3crect x='67%' y='85' width='60%' height='5%' fill='%233B82F6' transform='skewX(-12)' /%3e%3crect x='3%' y='280' width='34%' height='18%' stroke='%233B82F6' strokeWidth='2' fill='none' transform='skewX(-12)' /%3e%3crect x='70%' y='200' width='400' height='80' stroke='%233B82F6' strokeWidth='2' fill='none' transform='skewX(-12)' /%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  .bg-grid-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 20L40 20' stroke='%232A4FDA' stroke-width='0.5' opacity='0.1'/%3E%3Cpath d='M20 0L20 40' stroke='%232A4FDA' stroke-width='0.5' opacity='0.1'/%3E%3C/svg%3E");
+    background-size: 40px 40px;
+    background-repeat: repeat;
+  }
+
+  .pulse-circle {
+    animation: pulse-circle 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-circle {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(42, 79, 218, 0.7);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 0 10px rgba(42, 79, 218, 0);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(42, 79, 218, 0);
+    }
+  }
+
+  .card-bg {
+    width: 60%;
+    height: 100%;
+    clip-path: polygon(10% 0, 100% 0, 88% 100%, 0% 100%);
+    background: #2356D4;
+  }
+
+  .title-bg {
+    width: 70%;
+    height: 80px;
+    clip-path: polygon(3% 0, 100% 0, 97% 100%, 0% 100%);
+    background: #60a5fa;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Animação para o efeito de flutuação */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes moveBg {
+  0% {
+    transform: scale(1.1) translateX(0) translateY(0);
+  }
+  50% {
+    transform: scale(0.9) translateX(15px) translateY(5px);
+  }
+  100% {
+    transform: scale(1) translateX(10px) translateY(10px);
+  }
+}
+
+.animate-moveBg {
+  animation: moveBg 20s linear infinite alternate;
+}
+
+@keyframes parallaxX {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 0%; }
+}
+.animate-parallaxX {
+  animation: parallaxX 15s linear infinite alternate;
+}
+
+.mask-image {
+  mask-image: url('/images/masks/mask-1.svg');
+  -webkit-mask-image: url('/images/masks/mask-1.svg');
+}
+
+/* Animação parallax para o MaskedParallaxCard */
+@keyframes parallaxX {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
