@@ -26,6 +26,7 @@ export interface AuthContextType {
   login: () => void;
   logout: () => void;
   register: () => void;
+  refreshEnrichedUserData: () => Promise<void>;
 }
 
 // Contexto
@@ -75,9 +76,6 @@ export function SimpleAuthProvider({ children }: SimpleAuthProviderProps) {
 
             // Atualiza estado
             if (authenticated) {
-              console.log('🔑 [Keycloak] Token Parsed - Dados completos do usuário:', kc.tokenParsed);
-              console.log('🔑 [Keycloak] Token para Postman:', kc.token);
-              
               const userData = {
                 id: kc.tokenParsed?.sub || 'unknown',
                 name: kc.tokenParsed?.name || kc.tokenParsed?.preferred_username || 'Usuário',
@@ -85,6 +83,17 @@ export function SimpleAuthProvider({ children }: SimpleAuthProviderProps) {
                 roles: kc.tokenParsed?.realm_access?.roles || [],
                 permissions: kc.tokenParsed?.resource_access?.[kc.clientId]?.roles || []
               };
+          
+              // Log de login via Keycloak
+              console.log('🔑 [Keycloak Login] Login realizado com sucesso');
+              console.log('🔑 [Keycloak Login] Dados da resposta:', JSON.stringify({
+                userId: userData.id,
+                name: userData.name,
+                email: userData.email,
+                roles: userData.roles,
+                permissions: userData.permissions,
+                tokenParsed: kc.tokenParsed
+              }, null, 2));
           
           setAuthenticated(true);
           setUser(userData);
@@ -125,6 +134,17 @@ export function SimpleAuthProvider({ children }: SimpleAuthProviderProps) {
         }
       };
 
+      // Método público para recarregar dados enriquecidos
+      const refreshEnrichedUserData = async (): Promise<void> => {
+        if (keycloak && authenticated && keycloak.idToken) {
+          console.log('🔄 [SimpleAuthProvider] Recarregando dados enriquecidos...');
+          await enrichUserData(keycloak.idToken);
+          console.log('✅ [SimpleAuthProvider] Dados enriquecidos recarregados');
+        } else {
+          console.warn('⚠️ [SimpleAuthProvider] Não é possível recarregar dados: usuário não autenticado');
+        }
+      };
+
   // Login SIMPLES
   const login = () => {
     if (keycloak) {
@@ -156,7 +176,21 @@ export function SimpleAuthProvider({ children }: SimpleAuthProviderProps) {
     error,
     login,
     logout,
-    register
+    register,
+    refreshEnrichedUserData: async () => {
+      if (keycloak && authenticated && keycloak.idToken) {
+        console.log('🔄 [SimpleAuthProvider] Recarregando dados enriquecidos...');
+        try {
+          const enrichedData = await enrichedUserService.enrichUserData(keycloak.idToken);
+          setEnrichedUserData(enrichedData);
+          console.log('✅ [SimpleAuthProvider] Dados enriquecidos recarregados');
+        } catch (error) {
+          console.warn('⚠️ [SimpleAuthProvider] Erro ao recarregar dados:', error);
+        }
+      } else {
+        console.warn('⚠️ [SimpleAuthProvider] Não é possível recarregar dados: usuário não autenticado');
+      }
+    }
   };
 
   return (
