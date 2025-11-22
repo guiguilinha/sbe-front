@@ -29,9 +29,12 @@ export class DiagnosticMapperService {
       empresa: enrichedUserData.empresas.map(emp => ({
         cnpj: emp.cnpj,
         nome: emp.nome,
-        isPrincipal: emp.isPrincipal,
-        codStatusEmpresa: emp.codStatusEmpresa,
-        desTipoVinculo: emp.desTipoVinculo
+        // Garantir que isPrincipal seja sempre boolean
+        isPrincipal: typeof emp.isPrincipal === 'string' 
+          ? emp.isPrincipal === 'true' || emp.isPrincipal === '1'
+          : Boolean(emp.isPrincipal),
+        codStatusEmpresa: emp.codStatusEmpresa || '',
+        desTipoVinculo: emp.desTipoVinculo || ''
       }))
     };
   }
