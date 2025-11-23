@@ -41,18 +41,19 @@ async function getDashboard(): Promise<DashboardResponse>{
 }
 
 /**
- * Lista diagnósticos de um usuário específico
+ * Lista diagnósticos do usuário autenticado
+ * O backend extrai o userId automaticamente do token Keycloak
  * Agora usa dados reais do Directus via API de persistência
- * 
- * @param userId - ID do usuário no Directus
  */
-async function listDiagnosticos(userId: string): Promise<Array<{id:string; date:string; overallScore:number}>>{
+async function listDiagnosticos(): Promise<Array<{id:string; date:string; overallScore:number}>>{
   try {
-    console.log('📋 [DashboardService] Buscando diagnósticos do usuário:', userId);
+    console.log('📋 [DashboardService] Buscando diagnósticos do usuário autenticado...');
+    console.log('📋 [DashboardService] O backend vai extrair userId do token Keycloak automaticamente');
     
     // Buscar diagnósticos reais do Directus
+    // O backend extrai userId do token Keycloak automaticamente (não precisa enviar na URL)
     const res = await api.get<{ success: boolean; data: Diagnostic[] }>(
-      `/diagnostics/user/${userId}`
+      `/diagnostics/user?page=1&limit=100` // Buscar até 100 diagnósticos para histórico completo
     );
     
     if (!res.data.success) {
