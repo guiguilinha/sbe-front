@@ -5,12 +5,39 @@ import type { Diagnostic } from '@contracts';
 
 /**
  * Busca dados do dashboard
- * Nota: O backend atualmente retorna dados mock. A agregação de dados reais do Directus
- * será implementada quando necessário para funcionalidades de evolução e performance.
+ * Agora usa dados reais do Directus baseados no usuário logado
+ * O backend extrai o userId automaticamente do token Keycloak
  */
 async function getDashboard(): Promise<DashboardResponse>{
-  const res = await api.get<DashboardResponse>('/dashboard');
-  return res.data;
+  try {
+    console.log('📊 [DashboardService] Buscando dados do dashboard...');
+    console.log('📊 [DashboardService] URL da requisição:', '/dashboard');
+    console.log('📊 [DashboardService] Base URL:', api.defaults.baseURL);
+    
+    const res = await api.get<DashboardResponse>('/dashboard');
+    
+    console.log('✅ [DashboardService] Resposta recebida:', {
+      status: res.status,
+      hasData: !!res.data,
+      hasUser: !!res.data.user,
+      hasCategories: !!res.data.categories,
+      categoriesCount: res.data.categories?.length || 0,
+      historyCount: res.data.historySample?.length || 0,
+      hasEvolution: !!res.data.evolution
+    });
+    
+    return res.data;
+  } catch (error: any) {
+    console.error('❌ [DashboardService] Erro ao buscar dashboard:', {
+      message: error?.message,
+      status: error?.response?.status,
+      statusText: error?.response?.statusText,
+      data: error?.response?.data,
+      url: error?.config?.url,
+      method: error?.config?.method
+    });
+    throw error;
+  }
 }
 
 /**
