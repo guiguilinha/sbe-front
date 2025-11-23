@@ -35,6 +35,17 @@ export function bindAuthTokenGetter(getter: () => Promise<string | undefined>) {
 api.interceptors.request.use(
   async (config: InternalAxiosRequestConfig) => {
     const token = tokenGetter ? await tokenGetter() : undefined;
+    
+    if (config.url?.includes('/dashboard')) {
+      console.log('📊 [API Interceptor] Requisição para dashboard:', {
+        url: config.url,
+        method: config.method,
+        baseURL: config.baseURL,
+        hasToken: !!token,
+        tokenLength: token?.length || 0
+      });
+    }
+    
     if (token) {
       config.headers = new AxiosHeaders();
     }
