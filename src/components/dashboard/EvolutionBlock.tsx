@@ -25,13 +25,10 @@ const mockData: EvolutionData[] = [
 const levelLabels = ["Iniciante", "Aprendiz", "Empreendedor", "Inovador"];
 
 export function EvolutionBlock({ 
-  period = "6m", 
-  view = "geral", 
-  insightLines, 
-  onOpenTable 
+  insightLines
 }: EvolutionBlockProps) {
-  const [selectedPeriod, setSelectedPeriod] = useState<"3m" | "6m" | "12m">(period);
-  const [selectedView, setSelectedView] = useState<"geral" | "categorias">(view);
+  const [selectedPeriod, setSelectedPeriod] = useState<"3m" | "6m" | "12m">("6m");
+  const [selectedView, setSelectedView] = useState<"geral" | "categorias">("geral");
 
   const [l1, l2] = Array.isArray(insightLines)
    ? insightLines 
@@ -122,7 +119,7 @@ export function EvolutionBlock({
             <span className="text-sm font-medium">+10,4% na última semana</span>
           </div>
           
-          <Button variant="ghost" size="sm" onClick={onOpenTable}>
+          <Button variant="ghost" size="sm">
             Ver como tabela →
           </Button>
         </div>

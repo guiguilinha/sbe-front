@@ -30,14 +30,25 @@ export function useDashboard(): State {
       // O backend usa o CPF do token para buscar o ID do Directus automaticamente
     });
     
-    // Verificar se está autenticado e tem dados do usuário
-    // O backend vai usar o CPF do token para buscar o ID do Directus
-    if (!authenticated || !enrichedUserData || !enrichedUserData.user) {
-      console.log('📊 [useDashboard] Não autenticado ou sem dados do usuário, não buscando dashboard');
-      setState({ isLoading: false, error: null, data: null });
+    // IMPORTANTE: Manter isLoading: true enquanto não tiver certeza
+    // Só setar isLoading: false após a resposta da requisição
+    
+    // Se não está autenticado ou não tem dados do usuário, ainda manter loading
+    // até ter certeza de que não deve buscar (aguardar enrichedUserData estar pronto)
+    if (!authenticated) {
+      console.log('📊 [useDashboard] Não autenticado, aguardando...');
+      // Manter loading enquanto não está autenticado (pode estar carregando ainda)
       return;
     }
 
+    // Se authenticated mas ainda não tem enrichedUserData, manter loading
+    if (!enrichedUserData || !enrichedUserData.user) {
+      console.log('📊 [useDashboard] Aguardando dados do usuário...');
+      // Manter loading enquanto enrichedUserData não está pronto
+      return;
+    }
+
+    // Agora que temos autenticação e dados do usuário, fazer a requisição
     let alive = true;
     (async () => {
       try {
@@ -57,6 +68,7 @@ export function useDashboard(): State {
             categoriesCount: data?.categories?.length || 0,
             historyCount: data?.historySample?.length || 0
           });
+          // IMPORTANTE: Só setar isLoading: false após receber a resposta
           setState({ isLoading: false, error: null, data });
         }
       } catch (err: any) {
@@ -67,6 +79,7 @@ export function useDashboard(): State {
           data: err?.response?.data
         });
         if (alive) {
+          // IMPORTANTE: Só setar isLoading: false após receber a resposta (mesmo em erro)
           setState({ isLoading: false, error: err as Error, data: null });
         }
       }
