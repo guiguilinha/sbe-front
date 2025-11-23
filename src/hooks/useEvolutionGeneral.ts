@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import api from '@/services/api';
 
 export interface EvolutionGeneralData {
   data: Array<{
@@ -34,21 +35,15 @@ export function useEvolutionGeneral(): UseEvolutionGeneralReturn {
       
       console.log('[useEvolutionGeneral] Iniciando busca de dados de evolução geral');
       
-      const response = await fetch('/api/dashboard/evolution/general');
-      
-      if (!response.ok) {
-        throw new Error(`Erro HTTP: ${response.status}`);
-      }
-      
-      const result = await response.json();
+      const response = await api.get<EvolutionGeneralData>('/dashboard/evolution/general');
       
       console.log('[useEvolutionGeneral] Dados recebidos:', {
-        hasData: !!result.data,
-        dataLength: result.data?.length || 0,
-        hasPerformance: !!result.performance
+        hasData: !!response.data.data,
+        dataLength: response.data.data?.length || 0,
+        hasPerformance: !!response.data.performance
       });
       
-      setData(result);
+      setData(response.data);
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Erro desconhecido';
       console.error('[useEvolutionGeneral] Erro ao buscar dados:', errorMessage);

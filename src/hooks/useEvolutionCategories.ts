@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import api from '@/services/api';
 
 export interface CategoryEvolutionData {
   id: string;
@@ -41,21 +42,15 @@ export function useEvolutionCategories(): UseEvolutionCategoriesReturn {
       
       console.log('[useEvolutionCategories] Iniciando busca de dados de evolução por categorias');
       
-      const response = await fetch('/api/dashboard/evolution/categories');
-      
-      if (!response.ok) {
-        throw new Error(`Erro HTTP: ${response.status}`);
-      }
-      
-      const result = await response.json();
+      const response = await api.get<EvolutionCategoriesData>('/dashboard/evolution/categories');
       
       console.log('[useEvolutionCategories] Dados recebidos:', {
-        hasData: !!result.data,
-        dataLength: result.data?.length || 0,
-        hasPerformance: !!result.performance
+        hasData: !!response.data.data,
+        dataLength: response.data.data?.length || 0,
+        hasPerformance: !!response.data.performance
       });
       
-      setData(result);
+      setData(response.data);
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Erro desconhecido';
       console.error('[useEvolutionCategories] Erro ao buscar dados:', errorMessage);
