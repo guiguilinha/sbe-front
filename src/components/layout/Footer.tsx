@@ -2,16 +2,7 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Twitter, Youtube, Linkedin } from "lucide-react";
 import LogoSebrae from "@/components/brand/LogoSebrae";
-import {
-  AlertDialog,
-  AlertDialogContent,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogAction,
-  AlertDialogCancel,
-} from "@/components/ui/alert-dialog";
+import { QuizExitDialog } from "@/components/brand/QuizExitDialog";
 import { useQuizExitConfirmation } from "@/lib";
 
 // Dados para os links do rodapé
@@ -111,20 +102,12 @@ function Footer() {
         </div>
       </div>
       {/* Modal de confirmação ao sair do quiz */}
-      <AlertDialog open={modalOpen} onOpenChange={setModalOpen}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Você perderá todo o progresso do teste</AlertDialogTitle>
-            <AlertDialogDescription>
-              Tem certeza que deseja sair do diagnóstico? Suas respostas não serão salvas.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel onClick={handleCancel}>Cancelar</AlertDialogCancel>
-            <AlertDialogAction onClick={handleConfirm}>Sair do Quiz</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+      <QuizExitDialog
+        isOpen={modalOpen}
+        onOpenChange={setModalOpen}
+        onConfirm={handleConfirm}
+        onCancel={handleCancel}
+      />
     </footer>
   );
 }

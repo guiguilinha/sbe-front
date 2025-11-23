@@ -18,6 +18,8 @@ import MGMap from '../components/layout/map/MGMap';
 import ResultsSidebar from '../components/results/ResultsSidebar';
 import { ResultsBottomSheet } from '../components/results/ResultsBottomSheet';
 import { useResultsPage } from '../hooks/useResultsPage';
+import { DashboardHeader } from '../components/layout/DashboardHeader';
+import Footer from '../components/layout/Footer';
 
 interface ResultsPageProps {
   previewToken?: string;
@@ -101,8 +103,12 @@ const ResultsPage: React.FC<ResultsPageProps> = ({ previewToken }) => {
   // Se estamos carregando dados de preview
   if (previewToken && previewLoading) {
     return (
-      <div className="h-full bg-gray-50 flex items-center justify-center">
-        <p className="text-gray-600">Carregando dados de preview...</p>
+      <div className="flex flex-col min-h-screen bg-gray-50">
+        <DashboardHeader />
+        <div className="flex-grow flex items-center justify-center">
+          <p className="text-gray-600">Carregando dados de preview...</p>
+        </div>
+        <Footer />
       </div>
     );
   }
@@ -110,30 +116,43 @@ const ResultsPage: React.FC<ResultsPageProps> = ({ previewToken }) => {
   // Se há erro no preview
   if (previewToken && previewError) {
     return (
-      <div className="h-full bg-gray-50 flex items-center justify-center">
-        <p className="text-red-600">Erro ao carregar preview: {previewError}</p>
+      <div className="flex flex-col min-h-screen bg-gray-50">
+        <DashboardHeader />
+        <div className="flex-grow flex items-center justify-center">
+          <p className="text-red-600">Erro ao carregar preview: {previewError}</p>
+        </div>
+        <Footer />
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="h-full bg-gray-50 flex items-center justify-center">
-        <p className="text-red-600">{error}</p>
+      <div className="flex flex-col min-h-screen bg-gray-50">
+        <DashboardHeader />
+        <div className="flex-grow flex items-center justify-center">
+          <p className="text-red-600">{error}</p>
+        </div>
+        <Footer />
       </div>
     );
   }
 
   if (!resultsData) {
     return (
-      <div className="h-full bg-gray-50 flex items-center justify-center">
-        <p className="text-gray-600">Não foi possível carregar seus resultados.</p>
+      <div className="flex flex-col min-h-screen bg-gray-50">
+        <DashboardHeader />
+        <div className="flex-grow flex items-center justify-center">
+          <p className="text-gray-600">Não foi possível carregar seus resultados.</p>
+        </div>
+        <Footer />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="flex flex-col min-h-screen bg-gray-50">
+      <DashboardHeader />
       {calculatedResult?.calculatedResult && (
         <ResultsBottomSheet 
           calculatedResult={calculatedResult.calculatedResult}
@@ -207,6 +226,7 @@ const ResultsPage: React.FC<ResultsPageProps> = ({ previewToken }) => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

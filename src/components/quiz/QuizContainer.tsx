@@ -248,14 +248,14 @@ const QuizContainer: React.FC<QuizContainerProps> = ({ data }) => {
   }
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col flex-1 min-h-0">
       <QuizHeader 
         title={header.title}
         subtitle={header.description}
       />
 
       
-      <div className="flex-grow flex flex-col items-center justify-center py-8 w-full max-w-4xl">
+      <div className="flex-grow flex flex-col items-center justify-center py-8 w-full max-w-4xl overflow-y-auto">
         <QuizProgressBar 
           current={currentQuestionIndex + 1}
           total={questions.length}
