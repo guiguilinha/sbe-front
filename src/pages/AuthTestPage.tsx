@@ -3,8 +3,9 @@
  * Integra todos os componentes de teste criados
  */
 
-import { AuthTestComponent } from '../auth/AuthTestComponent';
-import { HooksTestComponent } from '../auth/HooksTestComponent';
+// Componentes de teste removidos - não existem mais
+// import { AuthTestComponent } from '../auth/AuthTestComponent';
+// import { HooksTestComponent } from '../auth/HooksTestComponent';
 
 /**
  * Página de teste para autenticação
@@ -23,14 +24,11 @@ export default function AuthTestPage() {
           </p>
         </div>
 
-        {/* Componente de teste do AuthProvider */}
-        <div className="mb-8">
-          <AuthTestComponent />
-        </div>
-
-        {/* Componente de teste dos Hooks */}
-        <div className="mb-8">
-          <HooksTestComponent />
+        {/* Componentes de teste removidos - não existem mais */}
+        <div className="mb-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+          <p className="text-yellow-800">
+            ⚠️ Componentes de teste (AuthTestComponent, HooksTestComponent) foram removidos.
+          </p>
         </div>
 
         {/* Informações do sistema */}

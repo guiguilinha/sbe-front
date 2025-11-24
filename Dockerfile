@@ -1,5 +1,5 @@
 # Multi-stage build para otimização
-FROM node:18 AS builder
+FROM node:20 AS builder
 
 # Definir diretório de trabalho
 WORKDIR /app
@@ -12,9 +12,6 @@ RUN npm install
 
 # Copiar código fonte
 COPY . .
-
-# Limpar cache e reinstalar dependências
-RUN rm -rf node_modules package-lock.json && npm install
 
 # Build da aplicação
 RUN npm run build

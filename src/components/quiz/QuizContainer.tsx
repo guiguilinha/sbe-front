@@ -6,8 +6,7 @@ import type { QuizData, UserAnswer } from '@/types';
 import type { EmpresaVinculo } from '@/types/enriched-user.types';
 import { calculateResults } from '@/services/results/resultsService';
 import { useSimpleAuth } from '@/auth/SimpleAuthProvider';
-import { diagnosticMapperService } from '@/services/diagnostic/diagnostic-mapper.service';
-import { diagnosticPersistenceService } from '@/services/diagnostic/diagnostic-persistence.service';
+// Imports removidos - não são mais usados diretamente
 import { CompanySelectionModal } from './CompanySelectionModal';
 import { CompanyCreationModal } from './CompanyCreationModal';
 import QuizHeader from './QuizHeader';
@@ -20,7 +19,7 @@ interface QuizContainerProps {
 
 const QuizContainer: React.FC<QuizContainerProps> = ({ data }) => {
   const navigate = useNavigate();
-  const { enrichedUserData, authenticated, refreshEnrichedUserData } = useSimpleAuth();
+  const { enrichedUserData, refreshEnrichedUserData } = useSimpleAuth();
   const { header, questions, answers } = data;
   
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);

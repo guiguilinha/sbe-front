@@ -2,7 +2,6 @@ import { Hero } from "@/components/landing/Hero";
 import { Benefits } from "@/components/landing/Benefits";
 import { HowItWorks } from "@/components/landing/HowItWorks";
 import { MaturityLevels } from "@/components/landing/MaturityLevels";
-import { FAQ } from "@/components/landing/FAQ";
 import { SvgShapes } from "@/components/landing/SvgShapes";
 import { useHomeData } from "@/hooks/useHomeData";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -86,13 +85,6 @@ const HomePage: React.FC<HomePageProps> = ({ previewToken }) => {
           <MaturityLevels
             data={data?.maturityLevels}
             heroData={data?.hero}
-            loading={loading}
-            error={error}
-          />
-        </section>
-        <section className="w-full px-4 xl:pb-16 lg:pb-6 z-10" id="faq">
-          <FAQ 
-            data={data?.faq}
             loading={loading}
             error={error}
           />

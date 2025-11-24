@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import type { UserResultsData, CalculatedResult } from '../types';
-import type { UserAnswer } from '../types/quiz-result';
+import type { UserAnswer } from '../types/quiz';
 import type { QuizData } from '../types/quiz';
 import type { EmpresaVinculo } from '../types/enriched-user.types';
 import { useDiagnosticSave } from '../hooks/useDiagnosticSave';

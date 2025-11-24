@@ -197,7 +197,7 @@ export class ErrorHandlerService {
     // Em produção, enviar para serviço de monitoramento
     // Nota: A integração com serviços de monitoramento (Sentry, LogRocket, etc.)
     // será implementada quando necessário para produção.
-    if (process.env.NODE_ENV === 'production') {
+    if (import.meta.env.PROD) {
       // Sentry.captureException(appError.originalError);
     }
   }

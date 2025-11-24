@@ -79,8 +79,6 @@ export default function HistoricoDetailPage() {
           </button>
         </div>
         <EvolutionBlock 
-          period='6m'
-          view='geral'
           insightLines={`Evolução consolidada: ${data.overallScore} pts`} 
         />
         <CategoryList categories={data.categories} defaultOpenCount={2} />

@@ -134,16 +134,7 @@ export function SimpleAuthProvider({ children }: SimpleAuthProviderProps) {
         }
       };
 
-      // Método público para recarregar dados enriquecidos
-      const refreshEnrichedUserData = async (): Promise<void> => {
-        if (keycloak && authenticated && keycloak.idToken) {
-          console.log('🔄 [SimpleAuthProvider] Recarregando dados enriquecidos...');
-          await enrichUserData(keycloak.idToken);
-          console.log('✅ [SimpleAuthProvider] Dados enriquecidos recarregados');
-        } else {
-          console.warn('⚠️ [SimpleAuthProvider] Não é possível recarregar dados: usuário não autenticado');
-        }
-      };
+      // Método refreshEnrichedUserData está definido no value abaixo
 
   // Login SIMPLES
   const login = () => {

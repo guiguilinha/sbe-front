@@ -1,7 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useDashboard } from '@/hooks/useDashboard';
-import { useHomeData } from '@/hooks/useHomeData';
-import { fixDirectusImageUrl } from '@/utils/imageUtils';
 import { ProfileDropdown } from '@/components/ui/ProfileDropdown';
 import { useAuth } from '@/auth/SimpleUseAuth';
 import AuthGroupButtons from '@/components/ui/AuthGroupButtons';
@@ -17,24 +15,12 @@ export function DashboardHeader() {
   const location = useLocation();
   const { isAuthenticated } = useAuth();
   const { data: dashboardData } = useDashboard();
-  const { data: homeData } = useHomeData();
   
   // Dados do usuário com fallbacks
   const userName = dashboardData?.user?.name || 'Usuário';
   const userLevel = dashboardData?.overallLevel?.label || 'Iniciante digital';
   
-  // Obter imagem do nível a partir dos dados da homepage
-  const getLevelImage = (levelLabel: string) => {
-    if (!homeData?.maturityLevels?.cards) return '/broto_iniciante.png';
-    
-    const levelCard = homeData.maturityLevels.cards.find(card => 
-      card.title?.toLowerCase().includes(levelLabel.toLowerCase().split(' ')[0])
-    );
-    
-    return levelCard?.image ? fixDirectusImageUrl(levelCard.image) : '/broto_iniciante.png';
-  };
-  
-  const levelImage = getLevelImage(userLevel);
+  // Nota: levelImage removido pois não é mais usado no ProfileDropdown
   
   // Links de navegação
   const navLinks = [

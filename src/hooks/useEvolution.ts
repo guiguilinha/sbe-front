@@ -51,9 +51,10 @@ export function useEvolution(): UseEvolutionReturn {
     filterDataByPeriod(categoriesData.data.data, currentPeriod) : null;
   
   // Performance atual baseada na view
+  // Para 'geral' retorna performance direto, para 'categorias' retorna null (é um Record)
   const currentPerformance = currentView === 'geral' 
-    ? generalData.data?.performance || null
-    : categoriesData.data?.performance || null;
+    ? (generalData.data?.performance || null)
+    : null; // Categories performance é um Record, não um objeto único
   
   // Estados combinados
   const isLoading = generalData.isLoading || categoriesData.isLoading;

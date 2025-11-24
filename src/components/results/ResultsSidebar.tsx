@@ -1,5 +1,5 @@
 import React from 'react';
-import { Share2, Mail } from 'lucide-react';
+// Imports removidos - não são mais usados
 import { fixImageUrl } from "@/services/api";
 import type { CalculatedResult, UserResultsData } from '../../types';
 import { handleSmoothScroll } from '../../lib/scroll-utils';

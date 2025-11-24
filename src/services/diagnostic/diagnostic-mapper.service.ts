@@ -1,6 +1,7 @@
 import type { CompleteDiagnosticRequest } from '@contracts';
 import type { EnrichedUserData, EmpresaVinculo } from '@/types/enriched-user.types';
-import type { CalculatedResult, UserAnswer, CategoryMaturityLevel } from '@/types/quiz-result';
+import type { UserAnswer, QuestionData, AnswerData } from '@/types/quiz';
+import type { CalculatedResult } from '@/types/results';
 import type { QuizData } from '@/types/quiz';
 import type { UserResultsData } from '@/types';
 
@@ -13,7 +14,7 @@ export class DiagnosticMapperService {
    */
   private mapUserData(
     enrichedUserData: EnrichedUserData,
-    empresaSelecionada: EmpresaVinculo
+    _empresaSelecionada: EmpresaVinculo
   ) {
     console.log('[DiagnosticMapper] Mapeando dados do usuário');
     
@@ -136,14 +137,14 @@ export class DiagnosticMapperService {
     console.log(`[DiagnosticMapper] Mapeando respostas da categoria ${categoryId}:`, categoryAnswers.length);
     
     return categoryAnswers.map(ans => {
-      const question = quizData.questions.find(q => q.id === ans.question_id);
-      const answer = quizData.answers.find(a => a.id === ans.answer_id);
+      const question = quizData.questions.find(q => q.id === ans.question_id) as QuestionData | undefined;
+      const answer = quizData.answers.find(a => a.id === ans.answer_id) as AnswerData | undefined;
       
       return {
         idPergunta: ans.question_id,
-        pergunta: question?.title || '',
+        pergunta: question?.question || '',
         idResposta: ans.answer_id,
-        resposta: answer?.title || '',
+        resposta: answer?.answer || '',
         pontuacao: ans.score
       };
     });

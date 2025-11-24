@@ -3,7 +3,7 @@ import { useSimpleAuth } from '@/auth/SimpleAuthProvider';
 import { diagnosticMapperService } from '@/services/diagnostic/diagnostic-mapper.service';
 import { diagnosticPersistenceService } from '@/services/diagnostic/diagnostic-persistence.service';
 import type { UserResultsData, CalculatedResult } from '@/types';
-import type { UserAnswer } from '@/types/quiz-result';
+import type { UserAnswer } from '@/types/quiz';
 import type { QuizData } from '@/types/quiz';
 import type { EmpresaVinculo } from '@/types/enriched-user.types';
 

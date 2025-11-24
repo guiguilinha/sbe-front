@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import type { EmpresaVinculo } from '@/types/enriched-user.types';
 
 interface CompanySelectionModalProps {

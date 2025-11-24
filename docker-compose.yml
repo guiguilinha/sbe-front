@@ -1,6 +1,7 @@
 services:
   # Frontend
   frontend:
+    container_name: maturidade-digital-frontend
     build:
       context: .
       dockerfile: Dockerfile

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import type { EmpresaVinculo } from '@/types/enriched-user.types';
 import api from '@/services/api';
 
@@ -11,7 +11,7 @@ interface CompanyCreationModalProps {
 export function CompanyCreationModal({ 
   isOpen, 
   onCompanyCreated,
-  onClose 
+  onClose: _onClose 
 }: CompanyCreationModalProps) {
   const [mode, setMode] = useState<'form' | 'skip'>('form');
   const [cnpj, setCnpj] = useState('');

@@ -4,13 +4,15 @@
  */
 
 import { EnrichedUserData } from '../types/enriched-user.types';
+import { getEnvironmentConfig } from '../config/environment';
 
 export class EnrichedUserService {
   private readonly baseUrl: string;
 
   constructor() {
-    // Usa a URL do backend configurada
-    this.baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+    // Usa a URL da API configurada (relativa para passar pelo proxy do Nginx)
+    const config = getEnvironmentConfig();
+    this.baseUrl = config.API_URL || '/api';
   }
 
   /**

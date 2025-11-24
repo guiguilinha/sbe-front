@@ -27,21 +27,46 @@ export function EvolutionBlock({
     currentPerformance,
     isLoading,
     error,
-    refetch
+    refetch,
+    generalData,
+    categoriesData
   } = useEvolution();
 
   // Obter levelLabels dinamicamente do dashboard principal
   const { data: dashboardData } = useDashboard();
 
-  const [l1, l2] = Array.isArray(insightLines)
+  const insightArray = Array.isArray(insightLines)
    ? insightLines 
    : (():[string, string] => {
     const [a, b] = insightLines.split('\n');
     return [a, b ?? ''];
    })();
+  
+  const [l1, l2] = insightArray;
 
   // Dados para o gráfico baseado na view atual
   const chartData = currentView === 'geral' ? filteredGeneralData : filteredCategoriesData;
+  
+  // Debug: Log dos dados para verificar formato
+  if (chartData && chartData.length > 0) {
+    console.log('[EvolutionBlock] Dados do gráfico:', {
+      view: currentView,
+      period: currentPeriod,
+      dataLength: chartData.length,
+      firstItem: chartData[0],
+      hasLevel: chartData[0]?.level !== undefined,
+      hasMonth: chartData[0]?.month !== undefined
+    });
+  } else {
+    console.log('[EvolutionBlock] Sem dados para exibir:', {
+      view: currentView,
+      period: currentPeriod,
+      filteredGeneralDataLength: filteredGeneralData?.length || 0,
+      filteredCategoriesDataLength: filteredCategoriesData?.length || 0,
+      generalDataHasData: !!generalData.data?.data,
+      categoriesDataHasData: !!categoriesData.data?.data
+    });
+  }
   
   // Performance atual
   const performance = currentPerformance;
@@ -154,6 +179,27 @@ export function EvolutionBlock({
             <Button variant="outline" size="sm" onClick={refetch}>
               Tentar novamente
             </Button>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  // Verificar se há dados para exibir
+  const hasData = currentView === 'geral' 
+    ? (chartData && chartData.length > 0)
+    : (transformedCategoriesData && transformedCategoriesData.length > 0);
+
+  if (!hasData && !isLoading) {
+    return (
+      <Card className="rounded-xl">
+        <CardHeader className="pb-2">
+          <CardTitle className="text-lg font-medium text-gray-900">Evolução ao longo do tempo</CardTitle>
+        </CardHeader>
+        <CardContent className="flex items-center justify-center h-48">
+          <div className="text-center text-gray-500">
+            <p>Não há dados de evolução disponíveis para o período selecionado.</p>
+            <p className="text-sm mt-2">Realize mais diagnósticos para ver sua evolução.</p>
           </div>
         </CardContent>
       </Card>
@@ -429,7 +475,8 @@ export function EvolutionBlock({
         </div>
 
         {/* Insights */}
-        <p className="text-sm text-muted-foreground mt-0">{l2}</p>
+        {l1 && <p className="text-sm text-muted-foreground mt-0">{l1}</p>}
+        {l2 && <p className="text-sm text-muted-foreground mt-0">{l2}</p>}
       </CardContent>
     </Card>
   );

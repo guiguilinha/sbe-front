@@ -28,7 +28,6 @@ const menuItems = [
   { title: "Benefícios", url: "#beneficios" },
   { title: "Como Funciona", url: "#como-funciona" },
   { title: "Níveis de Maturidade Digital", url: "#niveis-maturidade" },
-  { title: "FAQ", url: "#faq" },
 ];
 
 function Header() {
